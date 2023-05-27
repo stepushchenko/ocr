@@ -4,6 +4,7 @@
 from pytesseract import pytesseract, Output
 from PIL import Image
 
+
 class Lang:
     ENG = 'eng'
     RUS = 'rus'
