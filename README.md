@@ -1,4 +1,12 @@
+# Installation
+
+```bash
+# activate venv
+pip3 install -r requirements.txt  # install requirements
+```
+
 # OCR PageObjectModel
+
 
 ```python
 # screenshots types
@@ -69,7 +77,7 @@ home_screen = {
     }
 }
 
-def test_radio_app_from_home_screen():
+def test_open_radio_app_from_home_screen():
     home_button_coordinates = get_new_coordinates_for_element(
         screen=home_screen,
         element_title='button_home',
@@ -78,6 +86,7 @@ def test_radio_app_from_home_screen():
     # press the home button
     # get new coordinates for Radio app icon
     # press the Radio app icon
+    # check the Radio app opened
 
 
 # PLAN
