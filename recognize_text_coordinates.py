@@ -33,13 +33,7 @@ if __name__ == '__main__':
     get_coordinates = GetCoordinates()
 
     print(get_coordinates.get_center_coordinate(
-        img='resources/example.png',
-        lang=Lang.ENG,
-        word='Search'
-    ))
-
-    print(get_coordinates.get_center_coordinate(
-        img='resources/mb.png',
+        img='resources/screenshots/mb.png',
         lang=Lang.GERMAN,
         word='Abstands-Assistent'
     ))

@@ -57,10 +57,10 @@ cv2.rectangle(big_image, top_left, bottom_right, (0, 0, 255), 5)
 cv2.imshow('ChessOne', big_image)
 cv2.waitKey(0)
 
+# close all opened windows
+cv2.destroyAllWindows()
+
 # prepare coordinates of the center of the small image
 width = round(top_left[0] + width/2)
 height = round(top_left[1] + height/2)
 print(f'Coordinates of the center of the small image: width {width} and height {height}')
-
-# close all opened windows
-cv2.destroyAllWindows()
