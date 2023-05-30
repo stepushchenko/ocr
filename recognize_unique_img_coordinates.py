@@ -15,7 +15,7 @@ cv2.waitKey(0)
 # prepare small image
 small_image = cv2.imread(small_image_path, 0)
 
-# draw red rectangle near small image
+# draw red rectangle near small image on a big image
 result = cv2.matchTemplate(big_image_prepared, small_image, cv2.TM_CCOEFF)
 min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
 height, width = small_image.shape[:2]
@@ -26,6 +26,11 @@ cv2.rectangle(big_image, top_left, bottom_right, (0, 0, 255), 5)
 # show big image with red rectangle near small image
 cv2.imshow('ChessOne', big_image)
 cv2.waitKey(0)
+
+# prepare coordinates of the center of the small image
+width = round(top_left[0] + width/2)
+height = round(top_left[1] + height/2)
+print(f'Coordinates of the center of the small image: width {width} and height {height}')
 
 # close all opened windows
 cv2.destroyAllWindows()
