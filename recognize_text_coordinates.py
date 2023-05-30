@@ -1,20 +1,71 @@
 import cv2
 import easyocr
-# import matplotlib.pyplot as plt
 
-image_path = 'resources/screenshots/text.png'
 
-# prepare image
-img = cv2.imread(image_path)
+class Lang:
+    ENG = 'en'
+    GERMAN = 'de'
 
-# instance text detector
-reader = easyocr.Reader(['en'], gpu=False)
 
-# detect text on image
-text_ = reader.detect(img)
+class TextRecognition:
+    def get_all_text_from_img(self, img_path: str, lang: list) -> dict:
+        # prepare image
+        img = cv2.imread(img_path)
+        # instance text detector
+        reader = easyocr.Reader(lang)
+        # detect text on image
+        text_ = reader.readtext(img)
+        # prepare result with coordinates
+        result = {}
+        for t in text_:
+            coordinates, text, index = t
+            result[text] = coordinates
+        # return
+        return result
 
-for t in text_:
-    print(t)
+    def get_block_coordinates(self, img_path: str, lang: list, text: str) -> dict:
+        text_from_img = self.get_all_text_from_img(
+            img_path=img_path,
+            lang=lang
+        )
+        result = {}
+        for key in text_from_img:
+            if key.find(text) != -1:
+                result[key] = text_from_img[key]
+        return result
 
-# issue with pyend
-# more details here: https://github.com/pandas-dev/pandas/issues/27532#issuecomment-514044754
+    def get_block_center_coordinates(self, img_path: str, lang: list, text: str) -> dict:
+
+        text_from_img = self.get_all_text_from_img(
+            img_path=img_path,
+            lang=lang
+        )
+
+        blocks_coordinates = {}
+        for key in text_from_img:
+            if key.find(text) != -1:
+                blocks_coordinates[key] = text_from_img[key]
+
+        result = {}
+        for key in blocks_coordinates:
+            coordinates = blocks_coordinates[key]
+            width = round((coordinates[0][0] + coordinates[1][0])/2)
+            height = round((coordinates[0][1] + coordinates[3][1])/2)
+            result[key] = [width, height]
+
+        return result
+
+
+if __name__ == '__main__':
+
+    image_eng = 'resources/screenshots/text.png'
+
+    language = Lang()
+    text_recognition = TextRecognition()
+
+    center_of_the_block = text_recognition.get_block_center_coordinates(
+        img_path=image_eng,
+        lang=[language.ENG],
+        text='bold'
+    )
+    print(center_of_the_block)
