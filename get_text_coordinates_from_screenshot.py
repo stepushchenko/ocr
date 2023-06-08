@@ -12,6 +12,7 @@ class TextRecognition:
         # prepare image
         img = cv2.imread(img_path)
         # instance text detector
+
         reader = easyocr.Reader(lang)
         # detect text on image
         text_ = reader.readtext(img)

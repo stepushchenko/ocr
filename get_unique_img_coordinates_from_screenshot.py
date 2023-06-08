@@ -31,8 +31,8 @@ And this is how we can match an image embedded in another image in Python using 
 import cv2
 
 # paths to the images
-big_image_path = 'resources/screenshots/chess5.png'
-small_image_path = 'resources/scraps/chess3.png'
+big_image_path = 'resources/screenshots/mb.png'
+small_image_path = 'resources/scraps/homeButton.png'
 
 # prepare big image
 big_image = cv2.imread(big_image_path)
