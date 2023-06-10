@@ -1,5 +1,6 @@
 # for Mac: brew install tesseract
 # for Windows: pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+# before running the script run command 'pip install pytesseract'
 
 from pytesseract import pytesseract, Output
 from PIL import Image

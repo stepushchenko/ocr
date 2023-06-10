@@ -1,6 +1,6 @@
 import cv2
 import easyocr
-import json
+
 
 class Lang:
     ENG = 'en'
@@ -53,23 +53,23 @@ class TextRecognition:
         result = {}
         for key in blocks_coordinates:
             coordinates = blocks_coordinates[key]
-            width = round((coordinates[0][0] + coordinates[1][0])/2)
-            height = round((coordinates[0][1] + coordinates[3][1])/2)
+            width = round((coordinates[0][0] + coordinates[1][0]) / 2)
+            height = round((coordinates[0][1] + coordinates[3][1]) / 2)
             result[key] = [width, height]
 
         return result
 
 
 if __name__ == '__main__':
-
-    image_eng = 'resources/screenshots/mb.png'
-
     language = Lang()
     text_recognition = TextRecognition()
 
-    center_of_the_block = text_recognition.get_block_center_coordinates(
-        img_path=image_eng,
-        lang=[language.ENG],
-        text='DISPLAY_CENTRAL'
+    image_eng = 'resources/screenshots/mb.png'
+
+    print(
+        text_recognition.get_block_center_coordinates(
+            img_path=image_eng,
+            lang=[language.ENG],
+            text='DISPLAY_CENTRAL'
+        )
     )
-    print(center_of_the_block)
