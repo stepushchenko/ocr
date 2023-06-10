@@ -35,13 +35,13 @@ class MultiplyImageCoordinates:
 
 
 if __name__ == '__main__':
-    unique_img_coordinates = MultiplyImageCoordinates()
+    multiply_img_coordinates = MultiplyImageCoordinates()
     big_image_path = 'resources/screenshots/mb.png'
     small_image_path = 'resources/scraps/radioButton.png'  # 2 elements
-    big_image = unique_img_coordinates.prepare_image(big_image_path)
-    small_image = unique_img_coordinates.prepare_image(small_image_path)
+    big_image = multiply_img_coordinates.prepare_image(big_image_path)
+    small_image = multiply_img_coordinates.prepare_image(small_image_path)
     print(
-        unique_img_coordinates.get_coordinates_small_imgs_in_big_img(
+        multiply_img_coordinates.get_coordinates_small_imgs_in_big_img(
             big_img=big_image,
             small_img=small_image
         )
